@@ -89,7 +89,7 @@ function App() {
   const handlePhoneBlur = async () => {
     if (formData.phoneNumber.length === 10) {
       try {
-        const response = await axios.get(`http://localhost:5000/api/customers/phone/${formData.phoneNumber}`);
+        const response = await axios.get(`https://registrationform-o0w1.onrender.com/api/customers/phone/${formData.phoneNumber}`);
         const customer = response.data;
         setFormData((prevData) => ({
           ...prevData,
@@ -174,7 +174,7 @@ function App() {
       setIsLoading(true);
       try {
         console.log('Submitting form data:', formData); // Debug log
-        const response = await axios.post('http://localhost:5000/api/customers', formData);
+        const response = await axios.post('https://registrationform-o0w1.onrender.com/api/customers', formData);
         setSuccessMessage(response.data.message);
         setFormData({
           fullName: '',
@@ -216,16 +216,7 @@ function App() {
   return (
     <Container fluid className="form-wrapper">
       <Row className="align-items-center min-vh-100 justify-content-center">
-        <Col md={6} className="p-0">
-          <div className="image-section">
-            <img
-              src={`${process.env.PUBLIC_URL}/image.png`}
-              alt="Registration Illustration"
-              className="img-fluid"
-            />
-          </div>
-        </Col>
-        <Col md={6} className="p-4">
+        <Col md={10} className="p-4">
           <div className="form-container">
             <h1 className="text-center mb-4">Customer Registration</h1>
             {successMessage && <Alert variant="success">{successMessage}</Alert>}
@@ -233,43 +224,40 @@ function App() {
             {locationError && <Alert variant="warning">{locationError}</Alert>}
             <Form onSubmit={handleSubmit}>
               <Row>
-                <Col md={12}>
-                  <Form.Group className="mb-3">
-                    <Form.Label>Full Name</Form.Label>
+                <Col md={6}>
+                  <Form.Floating className="mb-3">
                     <Form.Control
                       type="text"
                       name="fullName"
                       value={formData.fullName}
                       onChange={handleChange}
                       isInvalid={!!errors.fullName}
-                      placeholder="Enter your full name"
+                      placeholder="Full Name"
                       className="custom-input"
                     />
+                    <Form.Label>Full Name</Form.Label>
                     <Form.Control.Feedback type="invalid">{errors.fullName}</Form.Control.Feedback>
-                  </Form.Group>
+                  </Form.Floating>
                 </Col>
-              </Row>
-              <Row>
-                <Col md={12}>
-                  <Form.Group className="mb-3">
-                    <Form.Label>Email Address</Form.Label>
+                <Col md={6}>
+                  <Form.Floating className="mb-3">
                     <Form.Control
                       type="email"
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
                       isInvalid={!!errors.email}
-                      placeholder="Enter your email"
+                      placeholder="Email Address"
                       className="custom-input"
                     />
+                    <Form.Label>Email Address</Form.Label>
                     <Form.Control.Feedback type="invalid">{errors.email}</Form.Control.Feedback>
-                  </Form.Group>
+                  </Form.Floating>
                 </Col>
               </Row>
               <Row>
-                <Col md={12}>
-                  <Form.Group className="mb-3">
-                    <Form.Label>Phone Number</Form.Label>
+                <Col md={6}>
+                  <Form.Floating className="mb-3">
                     <Form.Control
                       type="text"
                       name="phoneNumber"
@@ -277,22 +265,21 @@ function App() {
                       onChange={handleChange}
                       onBlur={handlePhoneBlur}
                       isInvalid={!!errors.phoneNumber}
-                      placeholder="Enter 10-digit phone number"
+                      placeholder="Phone Number"
                       className="custom-input"
                     />
+                    <Form.Label>Phone Number</Form.Label>
                     <Form.Control.Feedback type="invalid">{errors.phoneNumber}</Form.Control.Feedback>
-                  </Form.Group>
+                  </Form.Floating>
                 </Col>
-              </Row>
-              <Row>
-                <Col md={12}>
-                  <Form.Group className="mb-3">
-                    <Form.Label>Gender</Form.Label>
+                <Col md={6}>
+                  <Form.Floating className="mb-3">
                     <Form.Select
                       name="gender"
                       value={formData.gender}
                       onChange={handleChange}
                       isInvalid={!!errors.gender}
+                      placeholder="Gender"
                       className="custom-input"
                     >
                       <option value="">Select Gender</option>
@@ -300,60 +287,59 @@ function App() {
                       <option value="Female">Female</option>
                       <option value="Other">Other</option>
                     </Form.Select>
+                    <Form.Label>Gender</Form.Label>
                     <Form.Control.Feedback type="invalid">{errors.gender}</Form.Control.Feedback>
-                  </Form.Group>
+                  </Form.Floating>
                 </Col>
               </Row>
               <Row>
-                <Col md={12}>
-                  <Form.Group className="mb-3">
-                    <Form.Label>Date of Birth</Form.Label>
+                <Col md={6}>
+                  <Form.Floating className="mb-3">
                     <Form.Control
                       type="date"
                       name="dateOfBirth"
                       value={formData.dateOfBirth}
                       onChange={handleChange}
                       isInvalid={!!errors.dateOfBirth}
-                      placeholder="Select your date of birth"
+                      placeholder="Date of Birth"
                       className="custom-input"
                     />
+                    <Form.Label>Date of Birth</Form.Label>
                     <Form.Control.Feedback type="invalid">{errors.dateOfBirth}</Form.Control.Feedback>
-                  </Form.Group>
+                  </Form.Floating>
                 </Col>
-              </Row>
-              <Row>
-                <Col md={12}>
-                  <Form.Group className="mb-3">
-                    <Form.Label>Address</Form.Label>
+                <Col md={6}>
+                  <Form.Floating className="mb-3">
                     <Form.Control
                       as="textarea"
                       name="address"
                       value={formData.address}
                       onChange={handleChange}
                       isInvalid={!!errors.address}
-                      placeholder="Enter your address"
+                      placeholder="Address"
                       rows={3}
                       maxLength={200}
                       className="custom-input"
                     />
+                    <Form.Label>Address</Form.Label>
                     <Form.Text className="char-count">{addressCharCount}/200 characters</Form.Text>
                     <Form.Control.Feedback type="invalid">{errors.address}</Form.Control.Feedback>
-                  </Form.Group>
+                  </Form.Floating>
                 </Col>
               </Row>
               <Row>
-                <Col md={12}>
-                  <Form.Group className="mb-3">
-                    <Form.Label>Password</Form.Label>
+                <Col md={6}>
+                  <Form.Floating className="mb-3">
                     <Form.Control
                       type="password"
                       name="password"
                       value={formData.password}
                       onChange={handleChange}
                       isInvalid={!!errors.password}
-                      placeholder="Enter your password"
+                      placeholder="Password"
                       className="custom-input"
                     />
+                    <Form.Label>Password</Form.Label>
                     {formData.password && (
                       <div className="mt-2">
                         <ProgressBar
@@ -364,55 +350,53 @@ function App() {
                       </div>
                     )}
                     <Form.Control.Feedback type="invalid">{errors.password}</Form.Control.Feedback>
-                  </Form.Group>
+                  </Form.Floating>
                 </Col>
-              </Row>
-              <Row>
-                <Col md={12}>
-                  <Form.Group className="mb-3">
-                    <Form.Label>Confirm Password</Form.Label>
+                <Col md={6}>
+                  <Form.Floating className="mb-3">
                     <Form.Control
                       type="password"
                       name="confirmPassword"
                       value={formData.confirmPassword}
                       onChange={handleChange}
                       isInvalid={!!errors.confirmPassword}
-                      placeholder="Confirm your password"
+                      placeholder="Confirm Password"
                       className="custom-input"
                     />
+                    <Form.Label>Confirm Password</Form.Label>
                     <Form.Control.Feedback type="invalid">{errors.confirmPassword}</Form.Control.Feedback>
-                  </Form.Group>
+                  </Form.Floating>
                 </Col>
               </Row>
               <Row>
                 <Col md={6}>
-                  <Form.Group className="mb-3">
-                    <Form.Label>Latitude</Form.Label>
+                  <Form.Floating className="mb-3">
                     <Form.Control
                       type="text"
                       name="latitude"
                       value={formData.latitude}
                       readOnly
                       isInvalid={!!errors.location}
-                      placeholder="Click Get Location"
+                      placeholder="Latitude"
                       className="custom-input"
                     />
-                  </Form.Group>
+                    <Form.Label>Latitude</Form.Label>
+                  </Form.Floating>
                 </Col>
                 <Col md={6}>
-                  <Form.Group className="mb-3">
-                    <Form.Label>Longitude</Form.Label>
+                  <Form.Floating className="mb-3">
                     <Form.Control
                       type="text"
                       name="longitude"
                       value={formData.longitude}
                       readOnly
                       isInvalid={!!errors.location}
-                      placeholder="Click Get Location"
+                      placeholder="Longitude"
                       className="custom-input"
                     />
+                    <Form.Label>Longitude</Form.Label>
                     <Form.Control.Feedback type="invalid">{errors.location}</Form.Control.Feedback>
-                  </Form.Group>
+                  </Form.Floating>
                 </Col>
               </Row>
               {/* Google Maps Preview */}
