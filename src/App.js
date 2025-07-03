@@ -214,7 +214,7 @@ function App() {
   };
 
   return (
-    <Container fluid className="form-wrapper">
+    <Container fluid className="form-wrapper" style={{background:'purple'}}>
       <Row className="align-items-center min-vh-100 justify-content-center">
         <Col md={10} className="p-4">
           <div className="form-container">
