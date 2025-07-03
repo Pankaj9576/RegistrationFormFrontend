@@ -154,6 +154,13 @@ function App() {
     else if (!/^\d{10}$/.test(formData.phoneNumber)) newErrors.phoneNumber = 'Phone Number must be 10 digits';
     if (!formData.gender) newErrors.gender = 'Gender is required';
     if (!formData.dateOfBirth) newErrors.dateOfBirth = 'Date of Birth is required';
+    else {
+      const selectedDate = new Date(formData.dateOfBirth);
+      const currentDate = new Date('2025-07-03'); // Current date set to July 03, 2025
+      if (selectedDate >= currentDate) {
+        newErrors.dateOfBirth = 'Date of Birth must be before the current date';
+      }
+    }
     if (!formData.address.trim()) newErrors.address = 'Address is required';
     else if (formData.address.length > 200) newErrors.address = 'Address must be less than 200 characters';
     if (!formData.password) newErrors.password = 'Password is required';
