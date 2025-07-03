@@ -14,6 +14,7 @@ body {
 .youtube-iframe {
   width: 200px;
   height: 200px;
+  margin-left: -20px; /* Shift left by 20px */
   margin-bottom: 20px;
 }
 
@@ -110,23 +111,35 @@ h1 {
   background: #f3f4f6;
 }
 
-@media (max-width: 768px) {
-  .form-container {
-    padding: 20px;
-    margin: 0 auto;
+@media (max-width: 1200px) {
+  .youtube-iframe {
+    margin-left: -10px; /* Reduce left shift on medium screens */
   }
-  .col-md-6 {
+}
+
+@media (max-width: 992px) {
+  .col-md-4,
+  .col-md-8 {
     flex: 0 0 100%;
     max-width: 100%;
+  }
+  .youtube-iframe {
+    margin-left: 0; /* Remove left shift on tablets */
+    margin: 0 auto 20px; /* Center iframe */
+  }
+  .form-container {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .form-container {
+    padding: 15px;
   }
   h1 {
     font-size: 1.8rem;
   }
-  .youtube-iframe {
-    margin: 0 auto 20px; /* Center iframe on mobile */
-  }
-  .col-md-4,
-  .col-md-8 {
+  .col-md-6 {
     flex: 0 0 100%;
     max-width: 100%;
   }
