@@ -219,8 +219,8 @@ function App() {
         <Col md={4} className="p-4">
           <div className="youtube-iframe">
             <iframe
-              width="200"
-              height="200"
+              width="400"
+              height="400"
               src="https://www.youtube.com/embed/vp4O5W1gTjA?autoplay=1"
               title="YouTube video"
               frameBorder="0"
