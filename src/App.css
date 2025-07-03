@@ -11,6 +11,12 @@ body {
   padding: 20px;
 }
 
+.youtube-iframe {
+  width: 200px;
+  height: 200px;
+  margin-bottom: 20px;
+}
+
 .form-container {
   background: rgba(255, 255, 255, 0.9);
   border-radius: 15px;
@@ -115,5 +121,13 @@ h1 {
   }
   h1 {
     font-size: 1.8rem;
+  }
+  .youtube-iframe {
+    margin: 0 auto 20px; /* Center iframe on mobile */
+  }
+  .col-md-4,
+  .col-md-8 {
+    flex: 0 0 100%;
+    max-width: 100%;
   }
 }
