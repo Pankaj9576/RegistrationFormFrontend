@@ -197,7 +197,7 @@ function App() {
         if (window.Swal) {
           window.Swal.fire({
             position: 'top-end',
-            icon: 'success',
+            icon: 'sweetalert2',
             title: 'Registration Successful!',
             text: response.data.message,
             showConfirmButton: false,
@@ -214,10 +214,22 @@ function App() {
   };
 
   return (
-    <Container fluid className="form-wrapper" style={{background:'purple'}}>
+    <Container fluid className="form-wrapper" style={{ background: 'purple' }}>
       <Row className="align-items-center min-vh-100 justify-content-center">
         <Col md={8} className="p-4">
           <div className="form-container">
+            {/* YouTube Iframe */}
+            <div className="youtube-iframe">
+              <iframe
+                width="200"
+                height="200"
+                src="https://www.youtube.com/embed/vp4O5W1gTjA"
+                title="YouTube video"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
+            </div>
             <Form onSubmit={handleSubmit}>
               <Row>
                 <Col md={6}>
