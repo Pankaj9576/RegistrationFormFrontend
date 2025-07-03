@@ -218,10 +218,6 @@ function App() {
       <Row className="align-items-center min-vh-100 justify-content-center">
         <Col md={10} className="p-4">
           <div className="form-container">
-            <h1 className="text-center mb-4">Customer Registration</h1>
-            {successMessage && <Alert variant="success">{successMessage}</Alert>}
-            {errors.server && <Alert variant="danger">{errors.server}</Alert>}
-            {locationError && <Alert variant="warning">{locationError}</Alert>}
             <Form onSubmit={handleSubmit}>
               <Row>
                 <Col md={6}>
